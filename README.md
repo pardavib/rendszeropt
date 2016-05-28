@@ -1,0 +1,2 @@
+# rendszeropt
+Rendszeroptimalizálás tételkidolgozás
