@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper,oneside]{report}             % Egyoldalas
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}				% ez kell az ékezetes szavak helyes elválasztásához
+\usepackage{lmodern}					% így rendesen lehet keresni a pdf-ben
+\def\magyarOptions{defaults=hu-min}
+\usepackage[magyar]{babel}				% A magyar.ldf-ből kimaradt dolgok
+\usepackage{indentfirst}				% Első bekezdések is kapjanak behúzást
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{anysize}
+\usepackage[unicode,bookmarks=true]{hyperref}
+
+%--------------------------------------------------------------------------------------
+% Main variables
+%--------------------------------------------------------------------------------------
+\newcommand{\vikszerzo}{Bódis-Szomorú András}
+\newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
+\newcommand{\vikcim}{Elektronikus terelők}
+\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
+\newcommand{\vikdoktipus}{Diplomaterv}
+\newcommand{\vikdepartmentr}{Bódis-Szomorú András}
+
+%--------------------------------------------------------------------------------------
+% Page layout setup
+%--------------------------------------------------------------------------------------
+\marginsize{35mm}{25mm}{15mm}{15mm} 	% Anysize package
+\frenchspacing							% Mondatvégi írásjelek után nem hagy nagyobb szóközt
+
+%--------------------------------------------------------------------------------------
+%	Setup hyperref package
+%--------------------------------------------------------------------------------------
+\hypersetup{
+    pdftitle={\vikcim},        % title
+    pdfauthor={\vikszerzo},    % author
+    pdfsubject={\vikdoktipus}, % subject of the document
+    pdfcreator={\vikszerzo},   % creator of the document
+    pdfproducer={Szeretet},    % producer of the document
+    pdfkeywords={keywords},    % list of keywords
+    pdfnewwindow=true,         % links in new window
+    colorlinks=true,           % false: boxed links; true: colored links
+    linkcolor=black,           % color of internal links
+    citecolor=black,           % color of links to bibliography
+    filecolor=black,           % color of file links
+    urlcolor=black             % color of external links
+    }
+
+%--------------------------------------------------------------------------------------
+% Table of contents and the main text
+%--------------------------------------------------------------------------------------
+\begin{document}
+\singlespacing
+\include{guideline}
+%\include{project}
+
+\pagenumbering{arabic}
+\onehalfspacing
+%\include{titlepage}
+%\tableofcontents\vfill
+%\include{declaration}
+%\include{abstract}
+%\include{introduction}
+%\include{chapter1}
+%\include{chapter2}
+\include{chapter6}
+%\include{acknowledgement}
+
+%\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
+%\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
+
+%\bibliography{mybib}
+%\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+%\bibliographystyle{plain}
+
+%\include{appendices}
+
+\label{page:last}
+\end{document}

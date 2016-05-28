@@ -1,52 +1,97 @@
 %--------------------------------------------------------------------------------------
-% Rovid formai es tartalmi tajekoztato
+% Tételsor - 2016. tavasz
 %--------------------------------------------------------------------------------------
 
 \footnotesize
 \begin{center}
 \large
-\textbf{\Large �ltal�nos inform�ci�k, a diplomaterv szerkezete}\\
+\textbf{\Large Vizsgatételek - 2016. tavaszi félév}\\
 \end{center}
 
-A diplomaterv szerkezete a BME Villamosm�rn�ki �s Informatikai Kar�n:
+\vspace{6mm}
+\textbf{Lineáris programozás}
 \begin{enumerate}
-\item	Diplomaterv feladatki�r�s
-\item	C�moldal
-\item	Tartalomjegyz�k
-\item	A diplomatervez� nyilatkozata az �n�ll� munk�r�l �s az elektronikus adatok kezel�s�r�l
-\item	Tartalmi �sszefoglal� magyarul �s angolul
-\item	Bevezet�s: a feladat �rtelmez�se, a tervez�s c�lja, a feladat indokolts�ga, a diplomaterv fel�p�t�s�nek r�vid �sszefoglal�sa
-\item	A feladatki�r�s pontos�t�sa �s r�szletes elemz�se
-\item	El�zm�nyek (irodalomkutat�s, hasonl� alkot�sok), az ezekb�l levonhat� k�vetkeztet�sek
-\item	A tervez�s r�szletes le�r�sa, a d�nt�si lehet�s�gek �rt�kel�se �s a v�lasztott megold�sok indokl�sa
-\item	A megtervezett m�szaki alkot�s �rt�kel�se, kritikai elemz�se, tov�bbfejleszt�si lehet�s�gek
-\item	Esetleges k�sz�netnyilv�n�t�sok
-\item	R�szletes �s pontos irodalomjegyz�k
-\item	F�ggel�k(ek)
+\item	Az optimális hozzárendelés problémája, Egerváry algoritmusa.
+\item	A lineáris programozás alapfeladata, kétváltozós feladat grafikus megoldása. Lineáris egyenlőtlenség-rendszer megoldása Fourier-Motzkin eliminációval.
+\item	Farkas-lemma (két alakban). A lineáris program célfüggvénye felülről korlátosságának feltételei.
+\item	A lineáris programozás dualitástétele (két alakban). A lineáris programozás alapfeladatának bonyolultsága (biz. nélkül).
+\item	Egészértékű programozás: a feladat bonyolultsága, korlátozás és szétválasztás (Branch and Bound). Totálisan unimoduláris mátrix fogalma, példák. Egészértékű programozás totálisan unimoduláris együtthatómátrixszal (biz. nélkül).
+\item	A lineáris és egészértékű programozás alkalmazása páros gráfokra és intervallumrendszerekre: Egerváry tétele, intervallumrendszerek egyenletes színezése.
+\item	A lineáris és egészértékű programozás alkalmazása hálózati folyamproblémákra: a maximális folyam, a minimális költségű folyam és a többtermékes folyam feladatai, ezek hatékony megoldhatósága a tört-, illetve egészértékű esetben.
 \end{enumerate}
 
-Felhaszn�lhat� a k�vetkez� oldalt�l kezd�d� \LaTeX-Diplomaterv sablon dokumentum tartalma. 
+\vspace{3mm}
+\textbf{Matroidok}
+\begin{enumerate}[resume]
+\item	Matroid definíciója, alapfogalmak (bázis, rang, kör). Példák: lineáris matroid (mátrixmatroid), grafikus matroid, uniform matroid. A rangfüggvény szubmodularitása.
+\item	Mohó algoritmus matroidon. Matroid megadása rangfüggvényével, bázisaival (biz. nélkül). Matroid duálisa, a duális matroid rangfüggvénye.
+\item	Elhagyás és összehúzás. Matroidok direkt összege, összefüggősége. $T$ test felett reprezentálható matroid duálisának $T$ feletti reprezentálhatósága.
+\item	Grafikus, kografikus, reguláris, bináris és lineáris matroid fogalma, ezek kapcsolata (ebből bizonyítás csak a grafikus és reguláris matroidok közötti kapcsolatra), példák. Fano-matroid, példa nemlineáris matroidra. Bináris, reguláris és grafikus matroidok jellemzése tiltott minorokkal: Tutte tételei (biz. nélkül).
+\item	Matroidok összege. $k$-matroid metszet probléma, ennek bonyolultsága $k\geq3$ esetén.
+\item	A $k$-matroid partíciós probléma, ennek algoritmikus megoldása. A 2-matroid-metszet feladat visszavezetése matroid partíciós problémára.
+\item	$k$-polimatroid rangfüggvény fogalma. A 2-polimatroid-matching probléma, ennek bonyolultsága, Lovász tétele (biz. nélkül).
+\end{enumerate}
 
-A diplomaterv szabv�nyos m�ret� A4-es lapokra ker�lj�n. Az oldalak t�k�rmarg�val k�sz�ljenek (mindenhol 2.5cm, baloldalon 1cm-es k�t�ssel). Az alap�rtelmezett bet�k�szlet a 12 pontos Times New Roman, m�sfeles sork�zzel.
+\vspace{3mm}
+\textbf{Közelítő és ütemezési algoritmusok}
+\begin{enumerate}[resume]
+\item	Polinomiális időben megoldható feladat fogalma, példák. Az NP, co-NP, NP-nehéz és NP-teljes problémaosztályok definíciója, viszonyaik, példák problémákra valamennyi osztályból. NP-nehéz feladatok polinomiális speciális esetei: algoritmus a maximális független ponthalmaz problémára és az élszínezési problémára páros gráfokon. Additív hibával közelítő algoritmusok speciális pont-, illetve élszínezési problémákra.
+\item	A Hamilton-kör probléma visszavezetése a leghosszabb kör probléma additív közelítésére.\\ $k$-approximációs algoritmus fogalma, példák: két-két algoritmus a minimális lefogó ponthalmaz keresésére és a maximális páros részgráf keresésére. Minimális levelű, illetve maximális belső csúcsú feszítőfa keresése. Approximációs algoritmus az utóbbi feladatra (biz. nélkül).
+\item	A minimális lefogó ponthalmaz visszavezetése az általános utazóügynök probléma $k$-approximációs megoldására. Közelítő algoritmusok a metrikus utazóügynök problémára, Christofides algoritmusa.
+\item	A Hamilton-kör probléma visszavezetése az általános utazóügynök probléma $k$-approximációs megoldására. Közelítő algoritmusok a mtrikus utazóügynök problémára, Christofides algoritmusa.
+\item	Teljesen polinomiális approximációs séma fogalma. A részösszeg probléma, bonyolultsága. Teljesen polinomiális approximációs séma a részösszeg problémára.
+\item	Ütemezési feladatok típusai. Az $1|prec|C_{max}$ és az $1||\sum C_{j}$ feladat. Approximációs algoritmusok a $P||C_{max}$ feladatra: listás ütemezés tetszőleges sorrendben, éles példa tetszőleges számú gép esetére. Approximációs algoritmus a $P|prec|C_{max}$ feladatra (biz. nélkül), példák: az LPT sorrend, illetve a leghosszabb út szerinti ütemezés sem jobb, mint $(2-\frac {1} {m})$-approximáció. A $P|prec,p_{i}=1|C_{max}$ feladat, Hu algoritmusa (biz. nélkül).
+\end{enumerate}
 
-Minden oldalon - az els� n�gy szerkezeti elem kiv�tel�vel - szerepelnie kell az oldalsz�mnak.
+\vspace{3mm}
+\textbf{Megbízható hálózatok tervezése}
+\begin{enumerate}[resume]
+\item	Globális és lokális élösszefüggőség és élösszefüggőségi szám fogalma, Menger irányítatlan gráfokra és élösszefüggőségre vonatkozó két tétele (biz. nélkül). $\lambda(G)$ meghatározása folyamatok segítségével négyzetes és lineáris számú folyamkereséssel.
+\item	$\lambda(G)$ meghatározása összehúzások segítségével, Mader-tétele, Nagamochi és Ibaraki algoritmusa.
+\item	Minimális méretű 2-élösszefüggő részgráfok keresése. A probléma NP-nehézsége, Khuller-Vishkin algoritmus (biz. nélkül).
+\end{enumerate}
 
-A fejezeteket decim�lis beoszt�ssal kell ell�tni. Az �br�kat a megfelel� helyre be kell illeszteni, fejezetenk�nt decim�lis sz�mmal �s kifejez� c�mmel kell ell�tni. A fejezeteket decim�lis al�oszt�ssal sz�mozzuk, maxim�lisan 3 al�oszt�s m�lys�gben (pl. 2.3.4.1.). Az �br�kat, t�bl�zatokat �s k�pleteket c�lszer� fejezetenk�nt k�l�n sz�mozni (pl. 2.4. �bra, 4.2 t�bl�zat vagy k�pletn�l (3.2)). A fejezetc�meket igaz�tsuk balra, a norm�l sz�vegn�l viszont haszn�ljunk sorkiegyenl�t�st. Az �br�kat, t�bl�zatokat �s a hozz�juk tartoz� c�met igaz�tsuk k�z�pre. A c�m a jel�lt r�sz alatt helyezkedjen el.
+\vspace{3mm}
+\textbf{Hálózatelméleti alkalmazások}
+\begin{enumerate}[resume]
+\item	Kirchoff tételei a klasszikus villamos hálózatok analízisére.
+\item	Kirchoff eredményeinek általánosítása transzformátorokat vagy girátorokat is tartalmazó hálózatokra (biz. nélkül). Algoritmusok a feltételek ellenőrzésére.
+\item	Kirchoff eredményeinek általánosítása: szükséges feltétel tetszőleges lineáris sok-kapukat is tartalmazó hálózatok egyértelmű megoldhatóságára. Villamos hálózatok duálisa.
+\end{enumerate}
 
-A k�peket lehet�leg rajzol� programmal k�sz�ts�k el, az egyenleteket egyenlet-szerkeszt� seg�ts�g�vel �rj�k le (A \LaTeX~ehhez k�zenfekv� megold�sokat ny�jt).
+\vspace{3mm}
+\textbf{Statikai alkalmazások}
+\begin{enumerate}[resume]
+\item	Rúdszerkezetek, merevségi mátrix, merevség, egyszerű rácsos tartók, Cremona-Maxwell diagramok.
+\item	Minimális merev rúdszerkezetek általános helyzetben, Laman tétele (biz. nélkül), Lovász és Yemini tétele.
+\item	Síkbeli négyzetrácsok és egyszintes épületek átlós merevítése.
 
-Az irodalomjegyz�k sz�vegk�zi hivatkoz�sa t�rt�nhet a Harvard-rendszerben (a szerz� �s az �vsz�m megad�s�val) vagy sorsz�mozva. A teljes lista n�vsor szerinti sorrendben a sz�veg v�g�n szerepeljen (sorsz�mozott irodalmi hivatkoz�sok eset�n hivatkoz�si sorrendben). A szakirodalmi forr�sok c�meit azonban mindig az eredeti nyelven kell megadni, esetleg z�r�jelben a ford�t�ssal. A list�ban szerepl� valamennyi publik�ci�ra hivatkozni kell a sz�vegben (a \LaTeX-sablon a Bib\TeX~seg�ts�g�vel mindezt automatikusan kezeli). Minden publik�ci� a szerz�k ut�n a k�vetkez� adatok szerepelnek: foly�irat cikkekn�l a pontos c�m, a foly�irat c�me, �vfolyam, sz�m, oldalsz�m t�l-ig. A foly�irat c�meket csak akkor r�vid�ts�k, ha azok nagyon k�zismertek vagy nagyon hossz�ak. Internet hivatkoz�sok megad�sakor fontos, hogy az el�r�si �t el�tt megadjuk az oldal tulajdonos�t �s tartalm�t (mivel a link egy id� ut�n ak�r el�rhetetlenn� is v�lhat), valamint az el�r�s id�pontj�t.
+\end{enumerate}
+
+\vspace{6mm}
+
+Felhasználható a következő oldaltól kezdődő \LaTeX-Diplomaterv sablon dokumentum tartalma. 
+
+A diplomaterv szabványos méretű A4-es lapokra kerüljön. Az oldalak tükörmargóval készüljenek (mindenhol 2.5cm, baloldalon 1cm-es kötéssel). Az alapértelmezett betűkészlet a 12 pontos Times New Roman, másfeles sorközzel.
+
+Minden oldalon - az első négy szerkezeti elem kivételével - szerepelnie kell az oldalszámnak.
+
+A fejezeteket decimális beosztással kell ellátni. Az ábrákat a megfelelő helyre be kell illeszteni, fejezetenként decimális számmal és kifejező címmel kell ellátni. A fejezeteket decimális aláosztással számozzuk, maximálisan 3 aláosztás mélységben (pl. 2.3.4.1.). Az ábrákat, táblázatokat és képleteket célszerű fejezetenként külön számozni (pl. 2.4. ábra, 4.2 táblázat vagy képletnél (3.2)). A fejezetcímeket igazítsuk balra, a normál szövegnél viszont használjunk sorkiegyenlítést. Az ábrákat, táblázatokat és a hozzájuk tartozó címet igazítsuk középre. A cím a jelölt rész alatt helyezkedjen el.
+
+A képeket lehetőleg rajzoló programmal készítsék el, az egyenleteket egyenlet-szerkesztő segítségével írják le (A \LaTeX~ehhez kézenfekvő megoldásokat nyújt).
+
+Az irodalomjegyzék szövegközi hivatkozása történhet a Harvard-rendszerben (a szerző és az évszám megadásával) vagy sorszámozva. A teljes lista névsor szerinti sorrendben a szöveg végén szerepeljen (sorszámozott irodalmi hivatkozások esetén hivatkozási sorrendben). A szakirodalmi források címeit azonban mindig az eredeti nyelven kell megadni, esetleg zárójelben a fordítással. A listában szereplő valamennyi publikációra hivatkozni kell a szövegben (a \LaTeX-sablon a Bib\TeX~segítségével mindezt automatikusan kezeli). Minden publikáció a szerzők után a következő adatok szerepelnek: folyóirat cikkeknél a pontos cím, a folyóirat címe, évfolyam, szám, oldalszám tól-ig. A folyóirat címeket csak akkor rövidítsük, ha azok nagyon közismertek vagy nagyon hosszúak. Internet hivatkozások megadásakor fontos, hogy az elérési út előtt megadjuk az oldal tulajdonosát és tartalmát (mivel a link egy idő után akár elérhetetlenné is válhat), valamint az elérés időpontját.
 
 \vspace{5mm}
 Fontos:
 \begin{itemize}
-	\item A szakdolgozat k�sz�t� / diplomatervez� nyilatkozata (a jelen sablonban szerepl� sz�vegtartalommal) k�telez� el��r�s Karunkon ennek hi�ny�ban a szakdolgozat/diplomaterv nem b�r�lhat� �s nem v�dhet� !
-	\item Mind a dolgozat, mind a mell�klet maxim�lisan 15 MB m�ret� lehet !
+	\item A szakdolgozat készítő / diplomatervező nyilatkozata (a jelen sablonban szereplő szövegtartalommal) kötelező előírás Karunkon ennek hiányában a szakdolgozat/diplomaterv nem bírálható és nem védhető !
+	\item Mind a dolgozat, mind a melléklet maximálisan 15 MB méretű lehet !
 \end{itemize}
 
 \vspace{5mm}
 \begin{center}
-J� munk�t, sikeres szakdolgozat k�sz�t�st ill. diplomatervez�st k�v�nunk !
+Jó munkát, sikeres szakdolgozat készítést ill. diplomatervezést kívánunk !
 \end{center}
 
 \normalsize
