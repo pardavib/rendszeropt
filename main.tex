@@ -5,11 +5,12 @@
 \usepackage{lmodern}					% így rendesen lehet keresni a pdf-ben
 \def\magyarOptions{defaults=hu-min}
 \usepackage[magyar]{babel}				% A magyar.ldf-ből kimaradt dolgok
-\usepackage{indentfirst}				% Első bekezdések is kapjanak behúzást
+%\usepackage{indentfirst}				% Első bekezdések is kapjanak behúzást
 \usepackage{enumitem}
 \usepackage{setspace}
 \usepackage{anysize}
 \usepackage[unicode,bookmarks=true]{hyperref}
+\usepackage{amsthm}
 
 %--------------------------------------------------------------------------------------
 % Main variables
@@ -26,6 +27,11 @@
 %--------------------------------------------------------------------------------------
 \marginsize{35mm}{25mm}{15mm}{15mm} 	% Anysize package
 \frenchspacing							% Mondatvégi írásjelek után nem hagy nagyobb szóközt
+
+% Definíciókhoz %
+\newtheorem*{defn}{Definíció}
+\newtheorem*{theo}{Tétel}
+\newtheorem*{prf}{Bizonyítás}
 
 %--------------------------------------------------------------------------------------
 %	Setup hyperref package
@@ -63,6 +69,7 @@
 %\include{chapter1}
 %\include{chapter2}
 \include{chapter6}
+\include{chapter12}
 %\include{acknowledgement}
 
 %\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}

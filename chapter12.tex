@@ -1,0 +1,31 @@
+
+\setcounter{chapter}{12}
+%----------------------------------------------------------------------------
+\chapter*{12. Tétel}
+%----------------------------------------------------------------------------
+
+\textbf{Témakörök:} Matroidok összege. $k$-matroid metszet probléma, ennek bonyolultsága $k\geq3$ esetén.
+
+\noindent\hrulefill
+
+\section*{Matroidok összege}
+$M_{1}=(E,F_{1})$ és $M_{2}=(E,F_{2})$ matroidok összege $M_{1}\vee M_{2}=(E,F^{'})$, ahol $X\in F^{'}\Leftrightarrow\exists X_{1},X_{2}$, hogy $X=X_{1}\cup X_{2}$ és $X_{1}\in F_{1}$, valamint $X_{2}\in F_{2}$. (Azaz előáll egy $F_{1}$-beli és egy $F_{2}$-beli elem uniójaként.)
+
+\begin{theo} A függetlenségi aximómák segítségével bizonyítható, hogy matroidok összege is matroid. ($F(3)$-mat kell belátni.) \end{theo}
+
+\section*{Matroidok metszete}
+$M_{1}=(E,F_{1})$ és $M_{2}=(E,F_{2})$ matroidok metszete: $M_{1}\cap M_{2}=(E,F_{1}\cap F_{2})$ halmazrendszer.
+
+\begin{theo} Két matroid metszete nem feltétlen matroid. \end{theo}
+
+\section*{(Súlyozott) matroid metszet probléma (k-MMP vagy MMP\textsubscript{k})}
+Két matroid metszetének egy minimális méretű vagy súlyú elemét keressük.\\
+Adott: $k$ db matroid közös alaphalmazon: $M_{i}=(E,F_{i}), i=1,2,\ldots ,k$\\
+Kérdés: létezik-e valamely konstans $p$-re $p$ méretű halmaz $\cap F_{i}$-ben?\\
+Azaz: $\exists$-e $X\subseteq E: |X|\geq p: X\in \bigcap\limits_{i=1}^{k}F_{i}$
+
+\section*{Bonyolultság}
+\begin{itemize}
+	\item $k=1,2$ esetén: polinomiális (Mohó algoritmus)
+	\item $k\geq 3$ esetén: NP-teljes (Hamilton-út keresése)
+\end{itemize}

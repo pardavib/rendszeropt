@@ -1,7 +1,34 @@
+
+
 %----------------------------------------------------------------------------
-\chapter{A dolgozat formai kivitele}
+\chapter*{6. Tétel}
 %----------------------------------------------------------------------------
-Az itt található információk egy része a BME VIK Hallgatói Képviselet által készített ,,Utolsó félév a villanykaron'' c. munkából lett kis változtatásokkal átemelve. Az eredeti dokumentum az alábbi linken érhető el: \url{http://vik-hk.bme.hu/diplomafelev-howto-2009}.
+
+\textbf{Témakörök:} A lineáris és egészértékű programozás alkalmazása páros gráfokra és intervallumrendszerekre: Egerváry tétele, intervallumrendszerek egyenletes színezése.
+
+\noindent\hrulefill
+
+\begin{defn} [Illeszkedési mátrix] Legyen $n$ pontú gráfnak $e$ éle és definiáljuk az $n\times e$ méretű $B(G)=b_{ij}$ mátrix elemeit, hogy: \end{defn}
+
+\begin{theo} Minden irányított gráf illeszkedési mátrixa TU. \end{theo}
+
+\begin{prf} [Teljes indukció] 
+Válasszunk $M$ $k\times k$-as részmátrixot.
+\begin{itemize}
+	\item ha $k=1$, akkor nyilvánvaló az állítás, hisz minden elem $0$ vagy $\pm 1$
+	\item ha $k\geq 2$ és:
+	\begin{itemize}
+		\item $M$-nek van olyan oszlopa, melyben legfeljebb egy nemnulla elem van, akkor fejtsük ki $detM$-et eszerint az oszlop szerint, ekkor az indukciós feltétel szerint készen vagyunk.
+		\item egyébként minden oszlopban egy $+1$ és egy $-1$ elem van, ekkor $M$ sorainak összege nullvektor, a determináns $0$.
+	\end{itemize}
+\end{itemize}
+\end{prf}
+
+\begin{theo} Páros gráf illeszkedési mátrixa TU. \end{theo}
+
+\begin{prf}
+Irányítsuk $G(A,B,E)$ páros gráf éleit úgy, hogy minden él A-ból B-be mutasson. Ekkor az előző tétel szerint $B(G)$ TU. A B-hez tartozó sorokat szorozzuk $-1$-gyel, de ez nem változtat TU tulajdonságon.
+\end{prf}
 
 %----------------------------------------------------------------------------
 \section{A dolgozat kimérete}
