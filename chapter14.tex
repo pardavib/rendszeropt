@@ -8,46 +8,54 @@
 
 \noindent\hrulefill
 
-\section*{LP feladatok alakjai}
+\section*{k-polimatroid rangfüggvény}
+$f:2^{E}\rightarrow \mathbb{N}$ egy k-polimatroid rangfüggvény, ha teljesülnek rá az alábbi axiómák:
+\begin{itemize}
+\item (1) $r(\emptyset )=0$,
+\item (2) $r(\lbrace x\rbrace)\leq k$, $\forall x\in E$ elemre ,
+\item (3) $X\subseteq Y \Rightarrow r(X)\leq r(Y)$,
+\item (4) $r(X)+r(Y)\geq r(X\cap Y)+r(X\cup Y)$.
+\end{itemize}
+Általánosítása a matroid rangfüggvénynek, értsd:\\
+$k=1$: speciális eset: $r(\lbrace x\rbrace )\leq 1$, ekkor $R$ egy matroid rangfüggvénye.\\
+\textbf{Megjegyzés:} $r(\lbrace x\rbrace )\leq k$-val ekvivalens az $r(X)\leq k|X|$, illetve az $r(X\cap Y)\leq r(X)+k|Y|$ axióma.
 
-\begin{theo} TODO \end{theo}
+\section*{k-polimatroid matching probléma (k-PMM)}
+\begin{defn} $X\subseteq E$ k-polimatroid matching, ha $r(X)=k|X|$ egyenlőség fennáll.\end{defn}
+\begin{defn} k-polimatroid matching probléma:\\
+Adott: $r$ és $t\in \mathbb{N}$\\
+Kérdés: van-e legalább $T$ elemű k-polimatroid matching?
+\end{defn}
 
-\section*{Dualitás tétel}
+\subsection*{Speciális esetek}
+\begin{itemize}
+\item[•] Input: tetszőleges $G$ gráf, $t\in \mathbb{N}$. Kérdés: $\nu(G)\geq t$?\\
+2-PMM-ként megfogalmazva: $r(X)=|X$ által lefedett pontok halmaza $|\leq 2|X|$\\
+A 2-matching épp a közönséges párosításnak felel meg (innen az elnevezés).
+\item[•] Input: két maroid, $t\in \mathbb{N}$. Kérdés: létezik-e $X\subseteq E$, $|X|\geq t$, $X\in F_{1}\cap F_{2}$ (matroid metszet probléma)?\\
+2-PMM-ként megfogalmazva: $f(X)=r_{1}(X)+r_{2}(X)\leq 2|X|$
+\item[•] Az utolsó két probléma közös speciális esete: páros gráfban $\nu (G)\geq t$?\\
+Megoldás: a 2. probléma leképezése a 3.-ra:\\
+$M_{1}$ grafikus matroidban $e_{1}$ és $e_{2}$ párhuzamos élek, ha $e_{1}$-nek és $e_{2}$-nek felül van egy közös pontja. $M_{2}$-t hasonlóan értelmezzük a páros gráf alsó ponthalmazán.
+\end{itemize}
 
-\begin{theo} 
-Ha a $max \lbrace c x: Ax\leq b\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item	a $min \lbrace yb: yA=c,y\geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx: Ax\leq b\rbrace = min\lbrace yb: yA=c,y\geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-Megjegyzés: $(2)$-re szükség van, mert egy számhalmaz felülről korlátosságából általában nem következik, hogy létezik maximuma.
+\subsection*{Bonyolultság}
+\begin{itemize}
+\item $k\geq 3$ eset: NP-nehéz, mert speciális esetként tartalmazza a k-MMP-t.
+\item $k=2$ eset: "matroidpárosítási probléma", speciális esetként tartalmazza 2-MMP-t.
+\end{itemize}
 
-\section*{Ekvivalens alak}
 \begin{theo}
-Ha a $max\lbrace cx:AX\leq b,x\geq 0\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item a $min \lbrace yb:yA\geq c, y \geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx:AX\leq b,x\geq 0\rbrace = min \lbrace yb:yA\geq c, y \geq 0\rbrace$
-\end{enumerate}
+A matroidpárosítási probléma (2-PMM) teljes általánosságban nem oldható meg polinomidőben. A teljes általánosságban kifejezés a függvény megadási módjára vonatkozik: azt jelenti, hogy bármely $X\subseteq E$ részhalmazra egységnyi idő alatt megtudhatjuk $r(X)$ értékét, de ettől eltekintve a 2-polimatroid rangfüggvényről semmit sem tudunk.
 \end{theo}
 
-\newpage
 
-\section*{Bonyolultság}
-\subsection*{LP feladat, eldöntési problémaként megfogalmazva}
-Van-e az $Ax\leq b$ feltételt kielégítő $x$ vektorok között olyan, amelyre $cx\geq t$?
-\begin{itemize}
-	\item NP-beli: tanú egy ilyen $x$
-	\item co-NP-beli: ha $cx<t$, akkor a duális megoldása ($y$) tanú erre
-	\item (a tanúk polinomiális méretűek)
-\end{itemize}
+\section*{Lovász László tétele}
+"Legfontosabb speciális eset."
+\begin{theo}
+Vegyünk egy $k\times 2n$ méretű valós $M$ mátrixot, oszlopai legyenek rendre $M=(a_{1},b_{1},a_{2},b_{2},\cdots ,a_{n},b_{b})$ majd definiáljunk az $I=\lbrace 1,2,\cdots ,n\rbrace$ indexhalmazon egy $r$ függvényt úgy, hogy $X\subseteq I$ esetén legyen $r(X)$ az $\cup_{i\in X}\lbrace a_{i},b_{i}\rbrace$ vektorhalmaz által kifeszített altér dimenziója. Könnyű látni, hogy ilyenkor $r$ egy 2-polimatroid rangfüggvény.
+\end{theo}
 
-\subsection*{Módszerek}
-\begin{itemize}
-\item Szimplex módszer (1947, Dantzig): nem polinomiális, de a gyakorlati alkalmazások során gyors
-\item Ellipszoid módszer (1979, Hacsijan): polinomiális, de a gyakorlati alkalmazások során lassú
-\item Belső pontos módszerek (1984, Karmarkar): polinomiális, a gyakorlati alkalmazások során eredményes, de nem elterjedt
-\end{itemize}
+\begin{theo}
+A matroidpárosítási probléma polinomidőben megoldható, ha a 2-polimatroid rangfüggvény egy adott valós elemű $M$ mátrixból a fent leírt módon nyerhető.
+\end{theo}

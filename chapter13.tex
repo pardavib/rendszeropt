@@ -8,46 +8,44 @@
 
 \noindent\hrulefill
 
-\section*{LP feladatok alakjai}
+\section*{k-matroid partíciós probléma (k-MPP vagy {MPP\textsubscript{k}})}
+Adott: $k$ db matroid: $M_{i}=(E,F_{i}), i=1,2,\cdots ,k$\\
+Kérdés: a matroidok összege a szabadmatroidot adja-e, vagyis $E$ előáll-e $E_{1}\cap\cdots\cap E_{k}$ alakban úgy, hogy $E_{i}\in F_{i} \forall i$-re.\\
+Feltehető, hogy az $E_{i}$ halmazok diszjunktak, ezért hívják a feladatott MPP-nak.
 
-\begin{theo} TODO \end{theo}
-
-\section*{Dualitás tétel}
-
-\begin{theo} 
-Ha a $max \lbrace c x: Ax\leq b\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item	a $min \lbrace yb: yA=c,y\geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx: Ax\leq b\rbrace = min\lbrace yb: yA=c,y\geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-Megjegyzés: $(2)$-re szükség van, mert egy számhalmaz felülről korlátosságából általában nem következik, hogy létezik maximuma.
-
-\section*{Ekvivalens alak}
-\begin{theo}
-Ha a $max\lbrace cx:AX\leq b,x\geq 0\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item a $min \lbrace yb:yA\geq c, y \geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx:AX\leq b,x\geq 0\rbrace = min \lbrace yb:yA\geq c, y \geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-
-\newpage
-
-\section*{Bonyolultság}
-\subsection*{LP feladat, eldöntési problémaként megfogalmazva}
-Van-e az $Ax\leq b$ feltételt kielégítő $x$ vektorok között olyan, amelyre $cx\geq t$?
+\subsection*{Bonyolultság}
 \begin{itemize}
-	\item NP-beli: tanú egy ilyen $x$
-	\item co-NP-beli: ha $cx<t$, akkor a duális megoldása ($y$) tanú erre
-	\item (a tanúk polinomiális méretűek)
+\item {MPP\textsubscript{k}} NP-beli, mert tanú rá egy partícionálás és a tanú polinom (lineáris) iidőben ellenőrizhető.
+\item {MPP\textsubscript{k}} co-NP-beli, mert tanú rá egy $X\subseteq E$ halmaz, ami biztosan összefüggő az összegben, azaz $|X|>\sum r_{i}(X)$.
+\item {MPP\textsubscript{k}} P-beli.
 \end{itemize}
 
-\subsection*{Módszerek}
+\subsection*{Algoritmus}
+Induljunk ki $\forall i E_{i}=\emptyset$ állapotból. Ekkor $E_{i}\in F_{i}$.\\
+Az $E_{i}$ halmazokat addig bővítjük, amíg az uniójuk $E$ nem lesz, vagy ha nem bővíthető, mutatunk egy $X$ tanút.\\
+\newline
+A bővítéshez bevezetünk egy $n+k$ pontú irányított segédgráfot, melynek:
 \begin{itemize}
-\item Szimplex módszer (1947, Dantzig): nem polinomiális, de a gyakorlati alkalmazások során gyors
-\item Ellipszoid módszer (1979, Hacsijan): polinomiális, de a gyakorlati alkalmazások során lassú
-\item Belső pontos módszerek (1984, Karmarkar): polinomiális, a gyakorlati alkalmazások során eredményes, de nem elterjedt
+\item csúcsai $E$ elemei $\cup\lbrace p_{1},\cdots ,p_{k}\rbrace$. $p_{i}$ az $E_{i}$ partíció segédpontja
+\item $(x\rightarrow p_{i})\in E(G)$, ha $x\notin E_{i}$ és $E_{i}\cup\lbrace x\rbrace\in F_{i}$\\
+Az ilyen típusú élek azt jelképezik, hogy az $E_{i}$ partícióba felvehető $x$ a függetlenség megsértése nélkül.
+\item $(x\rightarrow y)\in E(G)$, ha $\exists i: x\notin E_{i}$, $y\in E_{i}$, $E_{i}\cup\lbrace x\rbrace\notin F_{i}$, de $E_{i}\cup\lbrace x\rbrace-\lbrace y\rbrace\in F_{i}$\\
+Az ilyen típusú élek azt jelentik, hogy az $E_{i}$ partícióban az $y$ elem kicserélhető $x$-re a függetlenség megsértése nélkül.
 \end{itemize}
+
+\subsection*{Lépések}
+\begin{itemize}
+\item 1. Megkeressük a legrövidebb irányított utat $(E-\cup E_{i})$-ből $\lbrace p_{1},\cdots ,p_{k}\rbrace$-ba.
+\item 2. Ha van ilyen út, javítunk az út mentén, azaz végrehajtjuk a cseréket. $\cup E_{i}$ mérete 1-gyel nő.\\
+Azért kell a legrövidebb úton végigmenni, mert különben nem garantált, hogy a cserék során nem sérül a partíciók függetlensége.
+\item 3. Különben STOP, nemleges a válasz, és a tanú az $(E-\cup E_{i}$)-ből irányított úton elérhető pontok halmaza.
+\end{itemize}
+
+\section*{2-matroid-metszet probléma}
+\subsection*{{MMP\textsubscript{k}} (emlék)}
+Adott: $k$ db matroid: $M_{i}=(E,F_{i}), i=1,2,\cdots ,k$ és egy $p$ egész szám\\
+Kérdés: létezik-e $F_{i}$-knek legalább $p$ méretű közös elemük?
+\begin{theo} {MMP\textsubscript{2}} $\in P$ \end{theo}
+\begin{defn} [Csonkolt]
+$M=(E,F)$ csonkoltja $M^{'}=(E,F^{'})$, ahol $F^{'}$ az $F$ elemeit tartalmazza a bázisok kivételével. A matroid rangja ettől 1-gyel csökken.
+\end{defn}
