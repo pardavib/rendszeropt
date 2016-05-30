@@ -8,59 +8,104 @@
 
 \noindent\hrulefill
 
-\section*{Elhagyás/törlés}
-$M=(E,F)$ a kiindulási matroidunk.\\
-Akkor tartozzon egy halmaz $F^{'}$-höz, ha $F$-hez tartozik és részhalmaza $E-X$-nek.\\
-$M\setminus X=(E-X,F^{'})$ matroid.\\
-Példa: grafikus matroidoknál élek egy halmazának törlése.
+Kirchoff 1847-ben írt cikkében több eredményének megfogalmazásához és bizonyításához használt fel gráfelméleti eredményeket.\\
+\newline
+Villamos hálózatok összekapcsolása $\rightarrow$ gráfokkal modellezhető:
+\begin{itemize}
+\item az alkatrészek a gráfok éleinek felelnek meg,
+\item az elmélet kétpólusú alkatrészeket tartalmazó hálózatokra alkalmazható közvetlenül.
+\end{itemize}
 
-\section*{Összehúzás}
-Legyen $M=(E,r)$ matroid az $r$ rangfüggvénnyel, és $X\subseteq E$.\\
-Ekkor az $E-X$ alaphalmazon az $R(Y)=r(X\cup Y)-r(X)$ rangfüggvénnyel definiált $(E-X,R)$ matroid az $M$-ből az $X$ összehúzásával áll ellő. Jele: $M/X$.
+\section*{Alapvető ismeretek}
+Egy villamos hálózat kizárólag
+\begin{itemize}
+\item $U=R*I$ egyenletű ellenállásokat,
+\item $\lbrace U$ adott, $I$ tetszőleges$\rbrace$ idealizált feszültségforrásokat,
+\item $\lbrace I$ adott, $U$ tetszőleges$\rbrace$ idealizált áramforrásokat tartalmaz.
+\end{itemize}
+Továbbá:
+\begin{itemize}
+\item[•] összekapcsolás: $G=(V,E)$ gráf,
+\item[•] $E=E_{R}\cup E_{U}\cup E_{I}$ (ellenállások, feszültség- és áramforrások halmaza),
+\item[•] élek irány: az alkatrész "mérőiránya".
+\end{itemize}
+
+\subsection*{Hálózatanalízis alapfeladata}
+Ismert: ellenállások, feszültségforrások feszültségei, áramforrások áramai.\\
+Cél: meghatározni a többi adatot.
+
+\subsection*{Ohm-törvény}
+$R=\frac{U}{I}$
+
+\subsection*{Kirchoff I. (Huroktörvény)}
+A hálózat gráfjának bármely köre mentén az alkatrészek feszültségeinek előjeles összege zérus.
+
+\subsection*{Kirchoff II. (Csomóponti törvény)}
+A hálózat gráfjának bármely vágása mentén az alkatrészek áramainak előjeles összege zérus.\\
+\newline
+\textbf{Megjegyzések:}
+\begin{itemize}
+\item az alapfeladat egy lineáris egyenletrendszer megoldása lesz
+\item kétszeresen összefüggő gráfokban a vágásokkal ekvivalensen értelmezhető csillagokra is a csomóponti törvény
+\item $U=0$: speciális feszültségforrás, rövidzár
+\item $I=0$: speciális áramforrás, szakadás
+\end{itemize}
 
 \begin{lem}
-$R$ egy matroid rangfüggvénye az $E-X$ alaphalmazon.
+Egy ilyen hálózat egyértelmű megoldhatóságának szükséges feltétele:
+\begin{itemize}
+\item $E_{U}$ élhalmaz körmentes,
+\item $E_{I}$ élhalmaz vágásmentes részgráfot határozzon meg.
+\end{itemize}
 \end{lem}
 
 \begin{theo}
-Az elhagyások és az összehúzások felcserélhetők. Minden $M$ matroid $N$ minora (elhagyások és összehúzások sorozata) előáll $N=(M\setminus A)/B$ alakban, ahol $A$ és $B$ diszjunkt halmazok.
+A fenti feltétel szükséges és elégséges lesz, ha a hálózat:
+\begin{itemize}
+\item feszültségforrásokat,
+\item áramforrásokat,
+\item és \textbf{pozitív} ellenállásokat tartalmaz.
+\end{itemize}
 \end{theo}
 
 \begin{theo}
-Az elhagyás és összehúzás duális műveletek:\\
-$M=(E,F)$ matroidban $X\subseteq E$\\
-Ekkor: $(M/X)^{*}=M^{*}\setminus X$ és $(M\setminus X)^{*}=M^{*}/X$
+A fenti feltételek mellett az összes ismeretlen közös nevezője: 
+$detM=\sum\limits_{F\in F}\prod\limits_{i\notin F} R_{i}$\\
+ahol $F$ a gráf azon részgráfjainak halmaza, melyek:
+\begin{itemize}
+\item $E_{I}$ egyetlen élét sem tartalmazzák,
+\item és $E_{U}$-valegyesítve fát alkotnak.
+\end{itemize}
+Ezek az úgynevezett "topológiai formulák".
 \end{theo}
 
-\section*{Direkt összeg}
-Legyen $M_{1}=(E_{1},F_{1})$ és $M_{2}=(E_{2},F_{2})$ két matroid a diszjunk $E_{1}$ és $E_{2}$ nemüres alaphalmazokon. Ekkor a két matroid direkt összege az $N=M_{1}+M_{2}$ matroid, melynek alaphalmaza $E_{1}\cup E_{2}$ és egy $X\subseteq E_{1}\cup E_{2}$ halmaz pontosan akkor független $N$-ben, ha $X\cap E_{1}$ és $X\cap E_{2}$ független $M_{1}$-ben és $M_{2}$-ben. 
+\subsection*{Egyéb kétpólusú alkatrészek}
+Tekercs: $U=L*\frac{dI}{dt}$ ($L$: induktivitás)\\
+Kondenzátor: $I=C*\frac{dU}{dt}$ ($C$: kapacitás)\\
+(Feszültség- és áramforrás függhet az időtől.) $\Rightarrow$ Nem szakadás/rövidzár.
 
-\section*{Összefüggőség}
+\subsection*{További tételek}
+\begin{theo} [1]
+Feszültség- és áramforrásokat, pozitív ellenállásokat, tekercseket és kondenzátorokat tartalmazó hálózat egyértelmű megoldhatóságának szükséges és elégséges feltétele:
 \begin{itemize}
-\item Egy matroid összefüggő, ha nem áll elő minorok direkt összegeként.
-\item Egy grafikus matroid akkor és csak akkor összefüggő, ha a gráf kétszeresen összefüggő.
+\item $E_{U}$ körmentes,
+\item $E_{I}$ vágásmentes részgráfot határozzon meg.
 \end{itemize}
+\end{theo}
 
-\section*{T-test feletti reprezentáció}
-Az $M=(E,F)$ matroid reprezentálható (koordinátázható) a $T$ test felett, ha létezik olyan mátrix, amelynek oszlopai $T$ feletti vektorok és az ezek által meghatározott lineáris matroid izomorf $M$-mel. ($E$ minden eleme $T$ feletti vektor.)\\
-\newline
+\begin{theo} [2]
+Ha még $E_{U}\cup E_{C}$ is körmentes, valamint $E_{I}\cup E_{L}$ vágásmentes, akkor a differenciálegyenlet $|E_{C}|+|E_{L}|$ rendű, és függetlenül előírhatók a kondenzátorok kezdeti feszültségei és a tekercsek kezdeti áramai.
+\end{theo}
+
 \noindent
-\textbf{Lineáris matroid:} $M$ lineáris, ha létezik olyan $F$ test, ami felett $M$ reprezentálható.\\
-\textbf{Bináris matroid:} a kételemű test felett reprezentálható matroid.\\
-\textbf{Reguláris matroid:} tetszőleges test felett reprezentálható matroid.\\
-\newline
-\textbf{Megjegyzés:} $M$ matroidnak több reprezentációja is lehet egy test felett.
+Ha (1) tétel teljesül, legyen $F$ gráf olyan, hogy:
+\begin{itemize}
+\item tartalmazza $E_{U}$ összes elemét,
+\item $E_{C}$-ből a lehető legtöbb elemet ($X_{C}$), hogy $E_{U}\cup X_{C}$ is körmentes legyen,
+\item $E_{I}$ egyetlen elemét sem tartalmazza,
+\item $E_{L}$-ből a lehető legkevesebb elemet, hogy a kimaradó $X_{L}$-ekre $E_{I}\cup X_{L}$ is vágásmentes legyen,
+\end{itemize}
+akkor a differenciálegyenlet $|X_{C}|+|X_{L}|$ rendű, továbbá az $X_{C}$ kezdeti feszültség és $X_{L}$ kezdeti áramerősség előírható függetlenül.
 
-\subsection*{Konstrukció}
-Legyen $r=r(E)$ és $n=|E|$. $M(E,F)$ leírható egy $r\times n$-es $A$ mátrixszal, melynek sorai lineárisan függetlenek. $r$ sor mindenképp szükséges, ha pedig több sorból áll a mátrix, kiválaszthatunk $r$ lineárisan függetlent, és elhagyhatjuk a maradékot: a matroid nem változik.\\
-\newline
-A kapott mátrix egy alkalmas nemszinguláris $r\times r$-es mátrixszal való szorzással leképezhető úgy, hogy a bal oldalán egységmátrix legyen. A transzformált mátrix izomorf matroidot határoz meg.
 
-\begin{figure}[h!]
-\includegraphics{matroid_ttest}
-\centering
-\end{figure}
 
-\begin{theo} Grafikus matroidok tetszőleges test felett reprezentálhatók. \end{theo}
-\begin{theo} Ha $M=(E,F)$ reprezentálható az $F$ test felett, akkor $M^{*}$ is. \end{theo}
-\begin{theo} Ha $M=(E,F)$ reprezentálható az $F$ test felett, akkor minden minora is reprezentálható. \end{theo}
