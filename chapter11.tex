@@ -8,46 +8,45 @@
 
 \noindent\hrulefill
 
-\section*{LP feladatok alakjai}
+\section*{Matroid osztályok}
+\textbf{Grafikus vagy körmatroid:} $G$ gráf által indukált matroid, melyben $E=\lbrace G$ élei$\rbrace$, $F=\lbrace G$-beli erdők$\rbrace$.\\
+\textbf{Kografikus:} grafikus matroid duálisa kografikus.\\
+\textbf{Reguláris:} tetszőleges test felett reprezentálható.\\
+\textbf{Bináris:} a kételemű (bináris) test felett reprezentálható.\\
+\textbf{Lineáris:} van olyan test, ami felett reprezentálható.\\ 
 
-\begin{theo} TODO \end{theo}
+\begin{figure}[h!]
+\includegraphics{matroid_osztalyok}
+\centering
+\end{figure}
 
-\section*{Dualitás tétel}
-
-\begin{theo} 
-Ha a $max \lbrace c x: Ax\leq b\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item	a $min \lbrace yb: yA=c,y\geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx: Ax\leq b\rbrace = min\lbrace yb: yA=c,y\geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-Megjegyzés: $(2)$-re szükség van, mert egy számhalmaz felülről korlátosságából általában nem következik, hogy létezik maximuma.
-
-\section*{Ekvivalens alak}
 \begin{theo}
-Ha a $max\lbrace cx:AX\leq b,x\geq 0\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item a $min \lbrace yb:yA\geq c, y \geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx:AX\leq b,x\geq 0\rbrace = min \lbrace yb:yA\geq c, y \geq 0\rbrace$
-\end{enumerate}
+Grafikus matroid bármely test felett reprezentálható (reguláris).
 \end{theo}
 
-\newpage
+\begin{theo}
+Ha $M=(E,F)$ reprezentálható az $F$ test felett, akkor $M^{*}$ is. $\Rightarrow$ A kografikus matroidok is regulárisak!
+\end{theo}
 
-\section*{Bonyolultság}
-\subsection*{LP feladat, eldöntési problémaként megfogalmazva}
-Van-e az $Ax\leq b$ feltételt kielégítő $x$ vektorok között olyan, amelyre $cx\geq t$?
+\section*{Karakterisztika}
+Ha az $F$ testhez van olyan pozitív egész $k$, melyre teljesül, hogy az $x+x+\cdots +x$ ($k$ tagú) összeg értéke minden $x\in F$ elemre zérus, akkor a legkisebb ilyen $k$ szám a test karakterisztikája. (Minden véges testnek van karakterisztikája, ami mindig egy prím.)
+
+\section*{Fano matroid}
+Adott a hételemű halmaz: $\lbrace a,b,c,d,e,f,g \rbrace$.
 \begin{itemize}
-	\item NP-beli: tanú egy ilyen $x$
-	\item co-NP-beli: ha $cx<t$, akkor a duális megoldása ($y$) tanú erre
-	\item (a tanúk polinomiális méretűek)
+\item minden legfeljebb kételemű halmaz független
+\item minden legalább négyelemű halmaz összefüggő
+\item a háromeleműek közül azok függetlenek, melyeket nem köt össze vonal az ábrán
 \end{itemize}
 
-\subsection*{Módszerek}
+\begin{figure}[h!]
+\includegraphics{fano_matroid}
+\centering
+\end{figure}
+
+\section*{Tutte tételei}
 \begin{itemize}
-\item Szimplex módszer (1947, Dantzig): nem polinomiális, de a gyakorlati alkalmazások során gyors
-\item Ellipszoid módszer (1979, Hacsijan): polinomiális, de a gyakorlati alkalmazások során lassú
-\item Belső pontos módszerek (1984, Karmarkar): polinomiális, a gyakorlati alkalmazások során eredményes, de nem elterjedt
+\item $M$ matroid bináris $\Leftrightarrow$ nem tartalmaz minorként $U_{4,2}$ matroidot.
+\item $M$ matroid reguláris $\Leftrightarrow$ nem tartalmaz minorként $U_{4,2}$, $F_{7}$ és $F_{7}^{*}$ matroidokat.
+\item $M$ matroid grafikus $\Leftrightarrow$ nem tartalmaz minorként $U_{4,2}$; $F_{7}$, $F_{7}^{*}$, $M^{*}(K_{5})$ és $M^{*}(K_{3,3})$ matroidokat.
 \end{itemize}
