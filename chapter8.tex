@@ -8,46 +8,65 @@
 
 \noindent\hrulefill
 
-\section*{LP feladatok alakjai}
+\section*{Mohó algoritmus}
 
-\begin{theo} TODO \end{theo}
+Olyan algoritmus, amely a következők szerint működik:
+\begin{itemize}
+\item Adott: $E$,$F$ és $w$, ahol $F$ nem üres halmazrendszer, leszálló, $w$ nemnegatív.
+\item Kiindulás: $0\in F$ megengedett megoldásból.
+\end{itemize}
 
-\section*{Dualitás tétel}
+Ha a pillanatnyi megoldás $X\subset E$, és létezik olyan elem, melyet $X$-hez hozzávéve az új halmaz is $F$-ben van, akkor legyen $e$ olyan elem, melyre: \\
+$w(e)=max\lbrace w(e^{'}):e^{'}\in E-X:X+e^{'}\in F\rbrace$ és legyen az új halmaz $X+e$. Ha nincs hozzávehető elem, akkor készen vagyunk.
 
-\begin{theo} 
-Ha a $max \lbrace c x: Ax\leq b\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item	a $min \lbrace yb: yA=c,y\geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx: Ax\leq b\rbrace = min\lbrace yb: yA=c,y\geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-Megjegyzés: $(2)$-re szükség van, mert egy számhalmaz felülről korlátosságából általában nem következik, hogy létezik maximuma.
+\section*{Matroid}
+\begin{defn}
+Egy $E$ alaphalmazon értelmezett, nemüres, leszálló halmazrendszer metroid, ha tetszőleges nemnegatív súlyfüggvényre a mohó algoritmus optimális - maximális súlyú - megoldást ad.
+\end{defn}
 
-\section*{Ekvivalens alak}
+\section*{Fügetlenségi aximómák}
+Legyen $F$ olyan halmazrendszer $E$-n, melyre teljesül az alábbi 2 feltétel:
+\begin{itemize}
+	\item (F1) $\emptyset \in F$,
+	\item (F1) ha $Y\subseteq X$ és $X\in F$, akkor $Y\in F$.
+\end{itemize}
+Ekkor $M=(E,F)$ akkor és csak akkor matroid, ha teljesül az alábbi:
+\begin{itemize}
+	\item (F3) Ha $X,Y\in F$ és $|X|>|Y|$, akkor létezik olyan $x\in X-Y$, melyre $Y+x\in F$.
+\end{itemize}
+
+\section*{Alapfogalmak}
+\begin{itemize}
+\item[•] \textbf{Független halmazok:} $M=(E,F)$ matroidban az alaphalmaz $F$-hez tartozó részhalmazai.
+\item[•] \textbf{Összefüggő halmaz:} ha $X\subseteq E$ és $X\notin F$, akkor $X$ összefüggő.
+\item[•] \textbf{Bázisok:} a maximális (nem bővíthető) független halmazok.
+\item[•] \textbf{Körök:} a tartalmazásra nézve minimális összefüggő halmazok.
+\item[•] \textbf{Hurok:} az egyelemű kör.
+\item[•] \textbf{Rang:} $X\subseteq E$ halmaz ranja $r(X)$ egy $X$-beli maxfüggetlen halmaz mérete.
+\item[•] \textbf{Rangfüggvény:} $r: 2^{E} \rightarrow \mathbb{Z}$ függvény (a matroid rangja $t$, ha $r(E)=t$).
+\end{itemize}
+
+\begin{lem}
+$M=(E,F)$ matroid, $A\subseteq E$. Ha $X_{1}$ és $X_{2}$ maxfüggetlen halmazok $A$-ban, akkor $|X_{1}|=|X_{2}|$.
+\end{lem}
+
+\section*{Példák}
+\begin{itemize}
+\item[•] \textbf{Grafikus matroid:} $G$ gráf által indukált matroid, melynek független halmazai a $G$-beli erdők. Jele: $M(G)$, másik neve: körmatroid.
+\item[•] \textbf{Lineáris matroid:} valamely mátrix oszlopvektorai által indukált matroid. Másik neve: mátrixmatroid.
+\item[•] \textbf{Uniform matroid:} $F$ az $n$ elemű $E$ alaphalmaz összes legfeljebb $k$ elemű halmazából áll ($0\leq k\leq n$). Ekkor $(E,F)$ matroid. Jele: $U_{n,k}$, $U_{n,n}$ a teljes vagy szabad matroid, $U_{n,0}$ a triviális matroid.
+\end{itemize}
+
 \begin{theo}
-Ha a $max\lbrace cx:AX\leq b,x\geq 0\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item a $min \lbrace yb:yA\geq c, y \geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx:AX\leq b,x\geq 0\rbrace = min \lbrace yb:yA\geq c, y \geq 0\rbrace$
-\end{enumerate}
+Egy uniform matroid grafikus, ha $U_{n,0}$, $U_{n,1}$, $U_{n,n-1}$ vagy $U_{n,n}$ alakú.
 \end{theo}
 
-\newpage
-
-\section*{Bonyolultság}
-\subsection*{LP feladat, eldöntési problémaként megfogalmazva}
-Van-e az $Ax\leq b$ feltételt kielégítő $x$ vektorok között olyan, amelyre $cx\geq t$?
+\section*{Rangfüggvény szubmodularitása}
+Legyen $R$ egy matroid rangfüggvénye, ekkor:
 \begin{itemize}
-	\item NP-beli: tanú egy ilyen $x$
-	\item co-NP-beli: ha $cx<t$, akkor a duális megoldása ($y$) tanú erre
-	\item (a tanúk polinomiális méretűek)
+\item (R1) $r(\emptyset )=0$,
+\item (R2) $r(X)\leq |X|$, minden $X\subseteq E$-re,
+\item (R3) $r(Y)\leq r(X)$, ha $Y\subseteq X$,
+\item (R4) $r(X)+r(Y)\geq r(X\cap Y) + r(X\cup Y)$ minden $X,Y\subseteq E$ halmazpárra.
 \end{itemize}
-
-\subsection*{Módszerek}
-\begin{itemize}
-\item Szimplex módszer (1947, Dantzig): nem polinomiális, de a gyakorlati alkalmazások során gyors
-\item Ellipszoid módszer (1979, Hacsijan): polinomiális, de a gyakorlati alkalmazások során lassú
-\item Belső pontos módszerek (1984, Karmarkar): polinomiális, a gyakorlati alkalmazások során eredményes, de nem elterjedt
-\end{itemize}
+Fordítva: ha $r$ egy egészértékű függvény $E$ részhalmazain, melyre (R1)-(R4) teljesülnek, akkor $r$ egy $M=(E,F)$ matroid rangfüggvénye, ahol: $F=\lbrace H: r(H)=|H|\rbrace$

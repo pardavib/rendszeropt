@@ -8,46 +8,57 @@
 
 \noindent\hrulefill
 
-\section*{LP feladatok alakjai}
+\section*{Mohó algoritmus (röviden)}
 
-\begin{theo} TODO \end{theo}
+Legyen $M=(E,F)$ matroid, $w:E\rightarrow \mathbb{R}_{+}$ nemnegatív súlyfüggvény. Keressük a maximális összsúlyú független halmazt, azaz: $\max\limits_{X\in F} \sum\limits_{e\in X} w(e)$.\\
+A mohó algoritmus tetszőleges matroidra és súlyfüggvényre optimális (maximális összsúlyú) megoldást ad.
 
-\section*{Dualitás tétel}
+\section*{Matroid megadása}
 
-\begin{theo} 
-Ha a $max \lbrace c x: Ax\leq b\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item	a $min \lbrace yb: yA=c,y\geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx: Ax\leq b\rbrace = min\lbrace yb: yA=c,y\geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-Megjegyzés: $(2)$-re szükség van, mert egy számhalmaz felülről korlátosságából általában nem következik, hogy létezik maximuma.
+Függetlenségi axiómákkal (lásd: előző tétel).
 
-\section*{Ekvivalens alak}
-\begin{theo}
-Ha a $max\lbrace cx:AX\leq b,x\geq 0\rbrace$ primál program megoldható és felülről korlátos:
-\begin{enumerate}
-\item a $min \lbrace yb:yA\geq c, y \geq 0\rbrace$ duális program is megoldható és alulról korlátos,
-\item	a primál programnak létezik maximuma és a duális programnak létezik minimuma,
-\item	továbbá ezek megegyeznek: $max\lbrace cx:AX\leq b,x\geq 0\rbrace = min \lbrace yb:yA\geq c, y \geq 0\rbrace$
-\end{enumerate}
-\end{theo}
-
-\newpage
-
-\section*{Bonyolultság}
-\subsection*{LP feladat, eldöntési problémaként megfogalmazva}
-Van-e az $Ax\leq b$ feltételt kielégítő $x$ vektorok között olyan, amelyre $cx\geq t$?
+\section*{Megadás bázisokkal}
 \begin{itemize}
-	\item NP-beli: tanú egy ilyen $x$
-	\item co-NP-beli: ha $cx<t$, akkor a duális megoldása ($y$) tanú erre
-	\item (a tanúk polinomiális méretűek)
+\item (B1) $B\neq\emptyset$,
+\item (B2) $|X_{1}| = |X_{2}|$ minden $X_{1},X_{2}\in B$-re,
+\item (B3) ha $X_{1},X_{2}\in B$ és $e_{1}\in X_{1}$, akkor létezik olyan $e_{2}\in X_{2}$, melyre $X_{1}-e_{1}+e_{2}\in B$.
+\end{itemize}
+Fordítva: ha $(E,B)$ egy halmazrendszer a (B1), (B2) és (B3) tulajdonságokkal, akkor $M=(E,F)$ matroidot alkot, ahol: $F=\lbrace H:H\subseteq B\rbrace$ valamely $B\in B$-re.
+
+\section*{Megadás rangfüggvénnyel}
+Lásd: korábban
+
+\section*{Egyéb fogalmak}
+\begin{defn} [Lezárt]
+$(E,F)$ matroidban egy $X\subseteq E$ halmaz lezártja egy maximális olyan halmaz, mely tartalmazza $X$-et és rangja megegyezik $X$ rangjával. Jele: $\overline{X}$.
+\end{defn}
+
+\begin{defn} [Zárt halmaz]
+egy $X$ halmaz zárt, ha $X=\overline{X}$.
+\end{defn}
+
+\begin{defn} [Izomorfia]
+Két matroid izomorf, ha létezik olyan bijekció a két alaphalmaz között, mely független halmazt független halmazba visz. Jele: $M\equiv M^{'}$.
+\end{defn}
+
+\section*{Duális}
+$M=(E,F)$, és $M$ duálisának alaphalmaza legyen $E$, és egy $X\subseteq E$ halmaz akkor legyen az új halmazrendszer eleme, ha $E-X$ tartalmaz $M$-beli bázist. Ezt a halmazt jelöljük $F^{*}$-al.
+
+\begin{defn}
+$M=(E,F)$ matroid bázisai $B=\lbrace B_{1},B_{2},\cdots ,E-B_{n}\rbrace$. Ebből már adódik $F^{*}$.
+\end{defn}
+
+\begin{theo} [Duális matroid tétel] Az $M^{*} =(E,F^{*})$ matroid.\\
+FYI: $(M^{*})^{*}\equiv M$
+\end{theo}
+
+\subsection*{Példa}
+$M=U_{5,2}$:
+\begin{itemize}
+\item $M$-ben minden legfeljebb 2-elemű halmaz független,
+\item a duálisban azon halmazok függetlenek, amelyek komplementerei tartalmaznak $M$-beli bázist, azaz 2-elemű halmazt,
+\item ezek a legfeljebb 3-elemű halmazok, tehát $M^{*}=U_{5,3}$.
 \end{itemize}
 
-\subsection*{Módszerek}
-\begin{itemize}
-\item Szimplex módszer (1947, Dantzig): nem polinomiális, de a gyakorlati alkalmazások során gyors
-\item Ellipszoid módszer (1979, Hacsijan): polinomiális, de a gyakorlati alkalmazások során lassú
-\item Belső pontos módszerek (1984, Karmarkar): polinomiális, a gyakorlati alkalmazások során eredményes, de nem elterjedt
-\end{itemize}
+\subsection*{Duális rangfüggvény}
+$r^{*}(X)=|X|-r(E)+r(E-X)$
